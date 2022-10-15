@@ -1,15 +1,3 @@
-<?php
-session_start();
-require 'db.php';
-
-if (isset($_POST["submit"])) {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    login($_POST);
-}
-
-?>
 <!doctype html>
 <html lang="en">
 
@@ -27,19 +15,30 @@ if (isset($_POST["submit"])) {
 
     <body>
         <header>
-            <!-- place navbar here -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  active" href="updateProfil.php">update profil</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
         <main>
-
-            <form action="" method="post">
-                <label for="email">email</label>
-                <input type="text" name="email" id="email">
-
-                <label for="text">password</label>
-                <input type="text" name="password" id="password">
-
-                <button type="submit" name="submit">submit</button>
-            </form>
+            <h1>halo</h1>
         </main>
         <footer>
             <!-- place footer here -->
