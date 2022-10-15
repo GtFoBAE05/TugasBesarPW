@@ -68,7 +68,7 @@ echo $_SESSION["id"];
             </nav>
         </header>
         <main>
-            <h1>Halaman pinjam buku</h1>
+            <h1>Halaman utama</h1>
             <form action="" method="get">
                 <table class="table">
                     <thead>
@@ -87,7 +87,7 @@ echo $_SESSION["id"];
                         <td><?php echo $b['jumlahTersedia']; ?></td>
                         <td>
                             <?php if ($b['jumlahTersedia'] != 0): ?>
-                            <button><a href="indexPinjam.php?id=<?php echo $b['idBuku']; ?>">pinjam</a></button>
+                            <button><a href="pinjamBuku.php?idBuku=<?php echo $b['idBuku']; ?>">pinjam</a></button>
                             <?php else: ?>
                             buku habis
                             <?php endif?>

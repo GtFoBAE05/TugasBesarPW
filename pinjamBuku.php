@@ -7,10 +7,23 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-$idUser = $_SESSION['id'];
-$statusbuku = show("SELECT * FROM statusbuku WHERE idUser='$idUser'");
+$buku = showById($_GET["idBuku"]);
 
 echo $_SESSION["id"];
+if (isset($_POST['submit'])) {
+
+    $idUser = $_SESSION["id"];
+    $idBuku = $_GET["idBuku"];
+    $statusBuku = "dipinjam";
+    $tanggal = date("d M Y", strtotime('+' . $_POST['tanggalBuku'] . ' days'));
+
+    $query = "INSERT INTO statusbuku VALUES ('', '$idUser', '$idBuku', '$statusBuku', '$tanggal')";
+
+    if (pinjamBuku($query) > 0) {
+        updateStockBuku($idBuku, "kurang");
+        header("location:index.php");
+    }
+}
 ?>
 
 <!doctype html>
@@ -21,8 +34,6 @@ echo $_SESSION["id"];
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <script src="script.js"></script>
 
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,6 +48,7 @@ echo $_SESSION["id"];
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
             integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     </head>
 
@@ -53,10 +65,10 @@ echo $_SESSION["id"];
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="indexPinjam.php">pinjam</a>
+                                <a class="nav-link" href="indexPinjam.php">pinjam</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="updateProfil.php">update profil</a>
@@ -71,47 +83,29 @@ echo $_SESSION["id"];
             </nav>
         </header>
         <main>
-            <h1>Halaman peminjaman</h1>
-            <form action="" method="get">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nama buku</th>
-                            <th scope="col">Gambar</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Tanggal pengembalian</th>
-                            <th scope="col">Pengembalian buku</th>
+            <h1>Halaman pinjam buku</h1>
 
-                        </tr>
-                    </thead>
+            <form class="row g-3" method="post">
+                <div class="col-12">
+                    <label for="namaBuku" class="form-label">nama buku:</label>
+                    <input type="text" class="form-control" id="namaBuku" value="<?php echo $buku['namaBuku'] ?>"
+                        readonly>
+                </div>
 
-                    <?php foreach ($statusbuku as $sb): ?>
-                    <?php $b = showById($sb['idBuku'])?>
-                    <tr>
-                        <td><?php echo $b['namaBuku']; ?></td>
-                        <td><img src="img/<?php echo $b["gambarBuku"]; ?>" width="70"></td>
-                        <td><?php echo $sb['statusBuku']; ?></td>
-                        <td><?php echo $sb['tanggal']; ?></td>
-                        <td>
-                            <?php if ($sb['statusBuku'] == "dipinjam"): ?>
-                            <button name="kembaliBuku"><a onClick="return confirm('yakin ingin kembalikan?')"
-                                    href="kembaliBuku.php?id=<?php echo $sb['id']; ?>&idBuku=<?php echo $b['idBuku']; ?> ">kembalikan
-                                    buku</a>
-                                <script>
-                                if (kembaliBuku == true)
-                                </script>
-                            </button>
-                            <?php else: ?>
-                            buku telah dikembalikan
-                            <?php endif?>
-                        </td>
-                    </tr>
+                <div class="col-12">
+                    <label for="gambarBuku" class="form-label">gambar buku:</label>
+                    <br>
+                    <img src="img/<?php echo $buku["gambarBuku"]; ?>" width="70">
+                </div>
 
-                    <?php endforeach;?>
+                <div class="col-12">
+                    <label for="tanggalBuku" class="form-label">durasi pinjam buku:</label>
+                    <input type="number" class="form-control" name="tanggalBuku" id="tanggalBuku" max="7" min="1">
+                </div>
 
-
-                </table>
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </form>
+
         </main>
         <footer>
             <!-- place footer here -->
@@ -124,7 +118,6 @@ echo $_SESSION["id"];
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
             integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-
     </body>
 
 </html>
