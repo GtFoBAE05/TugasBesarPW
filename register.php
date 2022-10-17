@@ -24,8 +24,8 @@
                 <div class="card-body">
                     <form action="./registerProcess.php" method="post">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
-                            <input type="file" name="foto" id="foto">
+                            <label for="gambar" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
+                            <input type="file" name="gambar" id="gambar">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
