@@ -62,6 +62,12 @@ $statusbuku = show("SELECT * FROM statusbuku WHERE idUser='$idUser'");
                                 <a class="nav-link" href="updateProfil.php">Update Profil</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="feedback.php">Kritik&Saran</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pengumuman.php">pengumuman</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>
                             </li>
 

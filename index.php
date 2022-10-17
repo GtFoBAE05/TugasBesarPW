@@ -59,6 +59,12 @@ $buku = show("SELECT * from buku");
                                 <a class="nav-link" href="updateProfil.php">Update Profil</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="feedback.php">Kritik&Saran</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pengumuman.php">pengumuman</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>
                             </li>
 
@@ -69,7 +75,7 @@ $buku = show("SELECT * from buku");
         </header>
         <main>
             <div class="m-2">
-                <h1>Halaman utama</h1>
+                <h1>List buku tersedia</h1>
                 <form action="" method="get">
                     <table class="table table-hover">
                         <thead>

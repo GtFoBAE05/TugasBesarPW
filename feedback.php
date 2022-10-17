@@ -8,19 +8,17 @@ if (!isset($_SESSION['isLogin'])) {
 
 include 'db.php';
 
-$user = showUserById($_SESSION['id']);
-
 if (isset($_POST['submit'])) {
-    if (updateUser($_POST['submit'], $_SESSION['id'])) {
+    if (addFeedback($_POST['submit']) > 0) {
         echo
             '<script>
-                alert("Berhasil update profil");
+                alert("Terima kasih atas kritik dan sarannya");
                 window.location = "./index.php"
                 </script>';
     } else {
         echo
             '<script>
-                alert("Gagal update profil");
+                alert("Gagal tambah kritik dan saran");
                 window.location = "./index.php"
                 </script>';
     }
@@ -32,7 +30,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
     <head>
-        <title>Update Profil</title>
+        <title>Kritik&Saran</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,10 +60,10 @@ if (isset($_POST['submit'])) {
                                 <a class="nav-link" href="indexPinjam.php">Pinjam Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="updateProfil.php">Update Profil</a>
+                                <a class="nav-link" href="updateProfil.php">Update Profil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="feedback.php">Kritik&Saran</a>
+                                <a class="nav-link active" href="feedback.php">Kritik&Saran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pengumuman.php">pengumuman</a>
@@ -81,40 +79,20 @@ if (isset($_POST['submit'])) {
         </header>
         <main>
             <div class="m-2">
-                <h1>Update Profile</h1>
-                <form action="" method="post" enctype="multipart/form-data">
+                <h1>Kritik dan saran anda sangat berharga untuk kami!</h1>
 
+                <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Nama</label>
-                        <input class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                            value="<?php echo $user['username'] ?>" required>
+                        <label for="kritik" class="form-label">Kritik:</label>
+                        <textarea class="form-control" id="kritik" rows="3" required name="kritik"></textarea>
                     </div>
-
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            value="<?php echo $user['email'] ?>" required>
+                        <label for="Saran" class="form-label">Saran:</label>
+                        <textarea class="form-control" id="Saran" rows="3" required name="saran"></textarea>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
-                        <br>
-                        <br>
-                        foto lama: <img src="img/<?php echo $user['foto'] ?>" alt="" width="100px">
-                        <br>
-                        <br>
-                        <input type="file" name="foto" id="foto">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="pass" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pass" name="pass" required>
-                    </div>
-
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary" name="submit">Update Profile</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </form>
+
             </div>
         </main>
         <footer>

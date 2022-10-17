@@ -8,23 +8,7 @@ if (!isset($_SESSION['isLogin'])) {
 
 include 'db.php';
 
-$user = showUserById($_SESSION['id']);
-
-if (isset($_POST['submit'])) {
-    if (updateUser($_POST['submit'], $_SESSION['id'])) {
-        echo
-            '<script>
-                alert("Berhasil update profil");
-                window.location = "./index.php"
-                </script>';
-    } else {
-        echo
-            '<script>
-                alert("Gagal update profil");
-                window.location = "./index.php"
-                </script>';
-    }
-}
+$pengumuman = getPengumuman();
 
 ?>
 
@@ -32,7 +16,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
     <head>
-        <title>Update Profil</title>
+        <title>Pengumuman</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,13 +46,13 @@ if (isset($_POST['submit'])) {
                                 <a class="nav-link" href="indexPinjam.php">Pinjam Buku</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="updateProfil.php">Update Profil</a>
+                                <a class="nav-link" href="updateProfil.php">Update Profil</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="feedback.php">Kritik&Saran</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pengumuman.php">pengumuman</a>
+                                <a class="nav-link active" href="pengumuman.php">pengumuman</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>
@@ -80,41 +64,27 @@ if (isset($_POST['submit'])) {
             </nav>
         </header>
         <main>
-            <div class="m-2">
-                <h1>Update Profile</h1>
-                <form action="" method="post" enctype="multipart/form-data">
+            <div class="m-2 position-absolute top-50 start-50 translate-middle">
 
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Nama</label>
-                        <input class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                            value="<?php echo $user['username'] ?>" required>
-                    </div>
+                <?php if ($pengumuman == 0): ?>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            value="<?php echo $user['email'] ?>" required>
-                    </div>
+                <h1>Belum ada pengumuman saat ini. Silahkan periksa lagi nanti...</h1>
 
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
-                        <br>
-                        <br>
-                        foto lama: <img src="img/<?php echo $user['foto'] ?>" alt="" width="100px">
-                        <br>
-                        <br>
-                        <input type="file" name="foto" id="foto">
-                    </div>
+                <?php else: ?>
 
-                    <div class="mb-3">
-                        <label for="pass" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pass" name="pass" required>
+                <?php foreach ($pengumuman as $p): ?>
+                <div class="card text-dark bg-light mb-3" style="max-width: 50 rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $p['judul'] ?></h5>
+                        <p class="card-text"><?php echo $p['konten'] ?></p>
                     </div>
+                </div>
+                <?php endforeach;?>
 
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary" name="submit">Update Profile</button>
-                    </div>
-                </form>
+
+                <?php endif;?>
+
+
             </div>
         </main>
         <footer>

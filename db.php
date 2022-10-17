@@ -171,3 +171,123 @@ function updateUser($user, $id)
     }
 
 }
+
+function addFeedback($post)
+{
+    global $con;
+
+    $kritik = $_POST['kritik'];
+    $saran = $_POST['saran'];
+
+    $query = "INSERT into feedback values ('', '$kritik', '$saran', 'belum dibaca')";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
+
+function getFeedback()
+{
+    global $con;
+
+    $query = "SELECT * FROM feedback";
+
+    $result = mysqli_query($con, $query);
+
+    $rows = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    return $rows;
+}
+
+function updateFeedback($id)
+{
+    global $con;
+
+    $query = "UPDATE feedback SET status ='sudah dibaca' where id='$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
+
+function deleteFeedback($id)
+{
+    global $con;
+
+    $query = "DELETE FROM feedback where id='$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
+
+function getPengumuman()
+{
+    global $con;
+
+    $query = "SELECT * FROM pengumuman";
+
+    $result = mysqli_query($con, $query);
+
+    $rows = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    return $rows;
+}
+
+function getPengumumanById($id)
+{
+    global $con;
+
+    $query = "SELECT * FROM pengumuman WHERE id= '$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_fetch_assoc($result);
+}
+
+function addPengumuman($post)
+{
+    global $con;
+
+    $judul = $_POST['judul'];
+    $konten = $_POST['konten'];
+
+    $query = "INSERT into pengumuman values ('', '$judul', '$konten')";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
+
+function updatePengumuman($post, $id)
+{
+    global $con;
+
+    $judul = $_POST['judul'];
+    $konten = $_POST['konten'];
+
+    $query = "UPDATE pengumuman SET judul ='$judul', konten='$konten' where id='$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
+
+function deletePengumuman($id)
+{
+    global $con;
+
+    $query = "DELETE FROM pengumuman where id='$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}

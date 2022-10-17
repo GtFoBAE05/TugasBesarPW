@@ -74,6 +74,12 @@ echo '
                 <div class="content-menu" >
                     <a href="ProfileAdmin.php" style="font-weight: 600">Profile</a>
                 </div>
+                <div class="content-menu" >
+                    <a href="indexFeedbackAdmin.php" style="font-weight: 600">Feedback</a>
+                </div>
+                <div class="content-menu" >
+                    <a href="indexPengumumanAdmin.php" style="font-weight: 600">Pengumuman</a>
+                </div>
                 <div class="content-menu " >
                     <a href="logout.php" style="font-weight:600"
                     <button class="btn"><i class="fa fa-sign-out fa-2x"></i></button>
