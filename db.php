@@ -96,3 +96,25 @@ function kembalikanBuku($id)
 
     return mysqli_affected_rows($con);
 }
+
+function returnAdmin()
+{
+    global $con;
+
+    $query = "SELECT * FROM users WHERE email = 'admin'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_fetch_assoc($result);
+}
+
+function updatePasswordAdmin($password)
+{
+    global $con;
+
+    $query = "UPDATE users SET pass = '$password' where email='admin'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_affected_rows($con);
+}
