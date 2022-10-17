@@ -2,7 +2,7 @@
 session_start();
 require 'db.php';
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -10,48 +10,50 @@ if (isset($_POST["submit"])) {
 }
 
 ?>
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet">
+    <title>Login Page</title>
+</head>
 
-    </head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/tugasbesarpw">Web Perpustakaan</a>
+        </div>
+    </nav>
+    <div class="bg bg-light text-dark">
+        <div class="container min-vh-100 d-flex align-items-center justify-content-center">
+            <div class="card text-white bg-dark ma-5 shadow" style="min-width: 25rem;">
+                <div class="card-header fw-bold">Login</div>
+                <div class="card-body">
+                    <form action="./loginProcess.php" method="post">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="pass" name="pass">
+                        </div>
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main>
-
-            <form action="" method="post">
-                <label for="email">email</label>
-                <input type="text" name="email" id="email">
-
-                <label for="text">password</label>
-                <input type="text" name="password" id="password">
-
-                <button type="submit" name="submit">submit</button>
-            </form>
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
-    </body>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" name="login">Login</button>
+                        </div>
+                    </form>
+                    <p class="mt-2 mb-0">Anda belum punya akun? <a href="./register.php" class="textprimary">Klik disini!</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 
 </html>

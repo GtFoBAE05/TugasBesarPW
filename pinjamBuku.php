@@ -2,7 +2,7 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION['isLogin'])) {
     header("location: login.php");
     exit;
 }
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Navbar</a>
+                    <a class="navbar-brand" href="#">Tugas Besar Pemrograman Web</a>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">

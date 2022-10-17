@@ -2,7 +2,7 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION['isLogin'])) {
     header("location: login.php");
     exit;
 }
@@ -98,7 +98,7 @@ echo $_SESSION["id"];
                                     href="kembaliBuku.php?id=<?php echo $sb['id']; ?>&idBuku=<?php echo $b['idBuku']; ?> ">kembalikan
                                     buku</a>
                                 <script>
-                                if (kembaliBuku == true)
+                                if (kembaliBuku == true);
                                 </script>
                             </button>
                             <?php else: ?>
