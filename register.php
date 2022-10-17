@@ -23,7 +23,7 @@
                 <div class="card text-white bg-dark ma-5 shadow " style="min-width: 25rem;">
                     <div class="card-header fw-bold">Register</div>
                     <div class="card-body">
-                        <form action="./registerProcess.php" method="post">
+                        <form action="./registerProcess.php" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="gambar" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
                                 <input type="file" name="gambar" id="gambar">

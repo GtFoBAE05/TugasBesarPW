@@ -8,8 +8,6 @@ if (isset($_POST['register'])) {
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $username = $_POST['username'];
 
-    move_uploaded_file($tmpName, 'img/' . $gambar);
-
     $select = mysqli_query($con, "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'");
     if (mysqli_num_rows($select)) {
         echo
@@ -38,7 +36,7 @@ if (isset($_POST['register'])) {
             $ekstensiGambar = strtolower(end($ekstensiGambar));
 
             //cek apakah gambar atau bukan
-            if (in_array($ekstensiGambar, $ekstensiGambarValid)) {
+            if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
                 echo "<script>
 				alert('Bukan gambar!'); window.history.back()
 			    </script>";
