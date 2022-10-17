@@ -8,19 +8,6 @@ if (isset($_POST['register'])) {
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $username = $_POST['username'];
 
-    $gambar = $_FILES['foto']['name'];
-    $tmpName = $_FILES['foto']['tmp_name'];
-    $error = $_FILES['foto']['error'];
-
-    if ($error === 4) {
-        echo
-            '<script>
-                alert("Silahkan pilih gambar");
-                window.location = "./register.php"
-                </script>';
-        exit;
-    }
-
     move_uploaded_file($tmpName, 'img/' . $gambar);
 
     $select = mysqli_query($con, "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'");

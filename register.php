@@ -41,29 +41,6 @@
                                 <input class="form-control" id="username" name="username" aria-describedby="emailHelp">
                             </div>
 
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Nama</label>
-                                <input class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                                    required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                                    required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="foto" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
-                                <br>
-                                <input type="file" name="foto" id="foto">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="pass" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="pass" name="pass" required>
-                            </div>
-
 
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary" name="register">Register</button>
