@@ -21,7 +21,13 @@ if (isset($_POST['login'])) {
             '<script>
                 alert("Login Admin"); window.location = "./indexAdmin.php"
                 </script>';
-        } else {
+        //login ke index admin tapi kalo passwordnya diganti ??
+        // }else if($email == "admin" && password_verify($pass, $user['pass'])){
+        //     echo
+        //     '<script>
+        //         alert("Login Admin"); window.location = "./indexAdmin.php"
+        //         </script>';
+        }else {
             $user = mysqli_fetch_assoc($query);
             if (password_verify($pass, $user['pass'])) {
                 // session adalah variabel global sementara yang disimpen di server                 
@@ -32,7 +38,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user'] = $user;
                 echo
                 '<script>                     
-                    alert("Login Success"); window.location = "./pinjamBuku.php" 
+                    alert("Login Success"); window.location = "./index.php" 
                     </script>';
             } else {
                 echo
@@ -43,6 +49,7 @@ if (isset($_POST['login'])) {
             }
         }
     }
+
 } else {
     echo
     '<script>             

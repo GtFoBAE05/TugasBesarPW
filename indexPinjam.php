@@ -25,13 +25,18 @@ echo $_SESSION["id"];
     <script src="script.js"></script>
 
     <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <!-- FontAwesome 6.2.0 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- (Optional) Use CSS or JS implementation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -39,7 +44,9 @@ echo $_SESSION["id"];
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="#">Navbar</a>
@@ -74,30 +81,30 @@ echo $_SESSION["id"];
                         <th scope="col">Status</th>
                         <th scope="col">Tanggal pengembalian</th>
                         <th scope="col">Pengembalian buku</th>
-
                     </tr>
                 </thead>
 
                 <?php foreach ($statusbuku as $sb) : ?>
-                    <?php $b = showById($sb['idBuku']) ?>
-                    <tr>
-                        <td><?php echo $b['namaBuku']; ?></td>
-                        <td><img src="img/<?php echo $b["gambarBuku"]; ?>" width="70"></td>
-                        <td><?php echo $sb['statusBuku']; ?></td>
-                        <td><?php echo $sb['tanggal']; ?></td>
-                        <td>
-                            <?php if ($sb['statusBuku'] == "dipinjam") : ?>
-                                <button name="kembaliBuku"><a onClick="return confirm('yakin ingin kembalikan?')" href="kembaliBuku.php?id=<?php echo $sb['id']; ?>&idBuku=<?php echo $b['idBuku']; ?> ">kembalikan
-                                        buku</a>
-                                    <script>
-                                        if (kembaliBuku == true);
-                                    </script>
-                                </button>
-                            <?php else : ?>
-                                buku telah dikembalikan
-                            <?php endif ?>
-                        </td>
-                    </tr>
+                <?php $b = showById($sb['idBuku']) ?>
+                <tr>
+                    <td><?php echo $b['namaBuku']; ?></td>
+                    <td><img src="img/<?php echo $b['gambarBuku']; ?>" width="70"></td>
+                    <td><?php echo $sb['statusBuku']; ?></td>
+                    <td><?php echo $sb['tanggal']; ?></td>
+                    <td>
+                        <?php if ($sb['statusBuku'] == "dipinjam") : ?>
+                        <button name="kembaliBuku"><a onClick="return confirm('yakin ingin kembalikan?')"
+                                href="kembaliBuku.php?id=<?php echo $sb['id']; ?>&idBuku=<?php echo $b['idBuku']; ?> ">kembalikan
+                                buku</a>
+                            <script>
+                            if (kembaliBuku == true);
+                            </script>
+                        </button>
+                        <?php else : ?>
+                        buku telah dikembalikan
+                        <?php endif ?>
+                    </td>
+                </tr>
 
                 <?php endforeach; ?>
 
@@ -109,10 +116,12 @@ echo $_SESSION["id"];
         <!-- place footer here -->
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
 
 </body>
