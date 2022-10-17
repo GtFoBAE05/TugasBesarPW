@@ -9,5 +9,5 @@ kembalikanBuku($id);
 $idBuku = $_GET['idBuku'];
 updateStockBuku($idBuku, "tambah");
 
-header("location: ./index.php");
+header("location: index.php");
 exit;

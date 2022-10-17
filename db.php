@@ -1,11 +1,5 @@
 <?php
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$name = "tugasbesarpw";
-
-$con = mysqli_connect($host, $user, $pass, $name);
+$con = mysqli_connect("localhost", "root", "", "tugasbesarpw");
 
 function login($post)
 {
@@ -45,7 +39,6 @@ function show($query)
     }
 
     return $rows;
-
 }
 
 function showById($idBuku)
