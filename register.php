@@ -23,7 +23,23 @@
                 <div class="card text-white bg-dark ma-5 shadow " style="min-width: 25rem;">
                     <div class="card-header fw-bold">Register</div>
                     <div class="card-body">
-                        <form action="./registerProcess.php" method="post" enctype="multipart/form-data">
+                        <form action="./registerProcess.php" method="post">
+                            <div class="mb-3">
+                                <label for="gambar" class="form-label">Foto (JPG, JPEG, PNG atau GIF)</label>
+                                <input type="file" name="gambar" id="gambar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="pass" name="pass">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Nama</label>
+                                <input class="form-control" id="username" name="username" aria-describedby="emailHelp">
+                            </div>
 
                             <div class="mb-3">
                                 <label for="username" class="form-label">Nama</label>

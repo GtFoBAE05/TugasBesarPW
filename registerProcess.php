@@ -31,6 +31,56 @@ if (isset($_POST['register'])) {
                 window.location = "./register.php"
                 </script>';
     } else {
+
+        function upload()
+        {
+            $namaFile = $_FILES['gambar']['name'];
+            $ukuranFile = $_FILES['gambar']['size'];
+            $error = $_FILES['gambar']['error'];
+            $tmpName = $_FILES['gambar']['tmp_name'];
+
+            if ($error === 4) {
+                echo "<script>
+                alert('pilih gambar !');
+                </script>";
+                return false;
+            }
+
+            $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+            $ekstensiGambar = explode('.', $namaFile);
+            $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+            //cek apakah gambar atau bukan
+            if (in_array($ekstensiGambar, $ekstensiGambarValid)) {
+                echo "<script>
+				alert('Bukan gambar!'); window.history.back()
+			    </script>";
+                return false;
+            }
+
+            //cek ukuran file
+            if ($ukuranFile > 1000000) {
+                echo "<script>
+				alert('ukuran gambar terlalu besar!');
+			    </script>";
+                return false;
+            }
+
+            //lolos pengecekan
+            $namaFileBaru = uniqid();
+            $namaFileBaru .= '.';
+            $namaFileBaru .= $ekstensiGambar;
+
+            move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+
+            return $namaFileBaru;
+        }
+
+        $gambar = upload();
+        if (!$gambar) {
+            return false;
+        }
+
         $query = mysqli_query(
             $con,
             "INSERT INTO users(email, pass, username, foto)
