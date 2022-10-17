@@ -118,3 +118,56 @@ function updatePasswordAdmin($password)
 
     return mysqli_affected_rows($con);
 }
+
+function showUserById($id)
+{
+    global $con;
+
+    $query = "SELECT * FROM users WHERE id = '$id'";
+
+    $result = mysqli_query($con, $query);
+
+    return mysqli_fetch_assoc($result);
+}
+
+function updateUser($user, $id)
+{
+    global $con;
+    $id = $id;
+
+    $email = $_POST['email'];
+    $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    $username = $_POST['username'];
+
+    $gambar = $_FILES['foto']['name'];
+    $tmpName = $_FILES['foto']['tmp_name'];
+    $error = $_FILES['foto']['error'];
+
+    if ($error === 4) {
+        echo
+            '<script>
+                alert("Silahkan pilih gambar");
+                window.location = "./index.php"
+                </script>';
+        exit;
+    }
+
+    move_uploaded_file($tmpName, 'img/' . $gambar);
+
+    $query = "SELECT * FROM users WHERE email = ' $email ' ";
+
+    $result = mysqli_query($con, $query);
+    if (mysqli_num_rows($result)) {
+        echo
+            '<script>
+                alert("Register gagal karena alamat email tersebut telah digunakan");
+                window.location = "./index.php"
+                </script>';
+        return mysqli_affected_rows($con);
+    } else {
+        $query = "UPDATE users SET username='$username', email='$email', pass='$pass', foto='$gambar' where id = '$id'";
+        $result = mysqli_query($con, $query);
+        return mysqli_affected_rows($con);
+    }
+
+}

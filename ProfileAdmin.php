@@ -43,7 +43,7 @@ if (isset($_POST['editPassword'])) {
                             <td>
                                 <div class="mb-3">
                                     <label for="titleInput" class="form-label">Password</label>
-                                    <input type="text" class="form-control w-100" name="password" width="100%"
+                                    <input type="password" class="form-control w-100" name="password" width="100%"
                                         autocomplete="off" value="<?php echo $admin['pass'] ?>" />
                                 </div>
                             </td>

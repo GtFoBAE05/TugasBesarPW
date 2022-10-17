@@ -24,13 +24,13 @@ if (isset($_POST['addBuku'])) {
     if ($query) {
         echo
             '<script>
-                alert("Register Success");
+                alert("Berhasil tambah buku");
                 window.location = "indexAdmin.php"
             </script>';
     } else {
         echo
             '<script>
-                alert("Register Failed");
+                alert("Gagal tambah buku");
             </script>';
     }
 
