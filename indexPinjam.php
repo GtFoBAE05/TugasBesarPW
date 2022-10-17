@@ -98,7 +98,7 @@ echo $_SESSION["id"];
                                     href="kembaliBuku.php?id=<?php echo $sb['id']; ?>&idBuku=<?php echo $b['idBuku']; ?> ">kembalikan
                                     buku</a>
                                 <script>
-                                if (kembaliBuku == true)
+                                if (kembaliBuku == true);
                                 </script>
                             </button>
                             <?php else: ?>

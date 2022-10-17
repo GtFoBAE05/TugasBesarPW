@@ -1,5 +1,11 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "tugasbesarpw");
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$name = "tugasbesarpw";
+
+$con = mysqli_connect($host, $user, $pass, $name);
 
 function login($post)
 {
