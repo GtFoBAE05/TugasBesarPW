@@ -8,9 +8,9 @@ if (!isset($_SESSION['isLogin'])) {
 if (isset($_GET['idbuku'])) {
     include 'db.php';
     $id = $_GET['idbuku'];
-    $queryCheck = mysqli_query($con, "SELECT statusBuku FROM statusbuku WHERE idBuku='$id'") or
+    $queryCheck = mysqli_query($con, "SELECT statusBuku FROM statusbuku WHERE idBuku='$id' AND statusBuku = 'dipinjam'") or
     die(mysqli_error($con));
-    if ($queryCheck == "dipinjam") {
+    if (mysqli_num_rows($queryCheck) > 0) {
         echo
             '<script>
             alert("Buku yang ingin dihapus masih dipinjam");
